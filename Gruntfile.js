@@ -61,7 +61,7 @@ module.exports = function(grunt) {
       web: {
         dest: "dist/markdown.js",
         minimum: ["parser"],
-        removeWith: ['dialects/gruber'],
+        removeWith: ['dialects/gruber','dialects/extendedWylie','dialects/wylie/wmd2uchen'],
         startFile: "inc/header.js",
         endFile: "inc/footer-web.js"
       },

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <textarea id="text-input" oninput="this.editor.update()"
+              rows="6" cols="60">Type **Markdown** here.</textarea>
+    <div id="preview"> </div>
+    <script src="dist/markdown.js"></script>
+    <script>
+      function Editor(input, preview) {
+        this.update = function () {
+          var tree = markdown.parse(input.value, "ExtendedWylie");
+          var jsonml = markdown.toHTMLTree( tree );
+          var html = markdown.renderJsonML( jsonml );
+          preview.innerHTML = html;
+          //preview.innerHTML = markdown.toHTML(input.value);
+        };
+        input.editor = this;
+        this.update();
+      }
+      var $ = function (id) { return document.getElementById(id); };
+      new Editor($("text-input"), $("preview"));
+    </script>
+  </body>
+</html>

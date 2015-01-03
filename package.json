@@ -15,7 +15,8 @@
     "Dominic Baggott <dominic.baggott@gmail.com> (http://evilstreak.co.uk)",
     "Ash Berlin <ash_markdownjs@firemirror.com> (http://ashberlin.com)",
     "XhmikosR <xhmikosr@users.sourceforge.net>",
-    "Robin Ward <robin.ward@gmail.com> (http://eviltrout.com)"
+    "Robin Ward <robin.ward@gmail.com> (http://eviltrout.com)",
+    "Leanne Northrop <leanne.northrop@gmail.com>"
   ],
   "bugs": {
     "url": "https://github.com/evilstreak/markdown-js/issues"
@@ -28,7 +29,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/evilstreak/markdown-js.git"
+    "url": "git@github.com:leannenorthrop/markdown-js.git"
   },
   "main": "./lib/index.js",
   "bin": {
