@@ -2,7 +2,7 @@ if (typeof define !== 'function') { var define = require('amdefine')(module) }
 define([], function () {
 
     // Implementation of http://www.thlib.org/reference/transliteration/#!essay=/thl/ewts/intro/
-
+    // Rules http://www.thlib.org/reference/transliteration/#!essay=/thl/ewts/rules/
     var UChenMap = {};
     // Consonants
     UChenMap["k"] = "\u0F40";
@@ -68,6 +68,64 @@ define([], function () {
     UChenMap[".h"] = "\u0F67";
     UChenMap[".a"] = "\u0F68";
     UChenMap[".'"] = "\u0F68";
+
+    UChenMap["ka"] = "\u0F40";
+    UChenMap["kha"] = "\u0F41";
+    UChenMap["ga"] = "\u0F42";
+    UChenMap["nga"] = "\u0F44";
+    UChenMap["ca"] = "\u0F45";
+    UChenMap["cha"] = "\u0F46";
+    UChenMap["ja"] = "\u0F47";
+    UChenMap["nya"] = "\u0F49";
+    UChenMap["ta"] = "\u0F4F";
+    UChenMap["tha"] = "\u0F50";
+    UChenMap["da"] = "\u0F51";
+    UChenMap["na"] = "\u0F53";
+    UChenMap["pa"] = "\u0F54";
+    UChenMap["pha"] = "\u0F55";
+    UChenMap["ba"] = "\u0F56";
+    UChenMap["ma"] = "\u0F58";
+    UChenMap["tsa"] = "\u0F59";
+    UChenMap["tsha"] = "\u0F5A";
+    UChenMap["dza"] = "\u0F5B";
+    UChenMap["wa"] = "\u0F5D";
+    UChenMap["zha"] = "\u0F5E";
+    UChenMap["za"] = "\u0F5F";
+    UChenMap["ya"] = "\u0F61";
+    UChenMap["ra"] = "\u0F62";
+    UChenMap["la"] = "\u0F63";
+    UChenMap["sha"] = "\u0F64";
+    UChenMap["sa"] = "\u0F66";
+    UChenMap["ha"] = "\u0F67";
+
+    UChenMap[".ka"] = "\u0F40";
+    UChenMap[".kha"] = "\u0F41";
+    UChenMap[".ga"] = "\u0F42";
+    UChenMap[".nga"] = "\u0F44";
+    UChenMap[".ca"] = "\u0F45";
+    UChenMap[".cha"] = "\u0F46";
+    UChenMap[".ja"] = "\u0F47";
+    UChenMap[".nya"] = "\u0F49";
+    UChenMap[".ta"] = "\u0F4F";
+    UChenMap[".tha"] = "\u0F50";
+    UChenMap[".da"] = "\u0F51";
+    UChenMap[".na"] = "\u0F53";
+    UChenMap[".pa"] = "\u0F54";
+    UChenMap[".pha"] = "\u0F55";
+    UChenMap[".ba"] = "\u0F56";
+    UChenMap[".ma"] = "\u0F58";
+    UChenMap[".tsa"] = "\u0F59";
+    UChenMap[".tsha"] = "\u0F5A";
+    UChenMap[".dza"] = "\u0F5B";
+    UChenMap[".wa"] = "\u0F5D";
+    UChenMap[".zha"] = "\u0F5E";
+    UChenMap[".za"] = "\u0F5F";
+    UChenMap[".ya"] = "\u0F61";
+    UChenMap[".ra"] = "\u0F62";
+    UChenMap[".la"] = "\u0F63";
+    UChenMap[".sha"] = "\u0F64";
+    UChenMap[".sa"] = "\u0F66";
+    UChenMap[".ha"] = "\u0F67";
 
     // Sanskrit & Subjoined Sanskrit
     UChenMap["gh"] = "\u0F43";
@@ -141,6 +199,44 @@ define([], function () {
     UChenMap["+.w"] = "\u0FBA";
     UChenMap["+.y"] = "\u0FBB";
     UChenMap["+.r"] = "\u0FBC";
+
+    UChenMap["+ka"] = "\u0F90";
+    UChenMap["+kha"] = "\u0F91";
+    UChenMap["+ga"] = "\u0F92";
+    UChenMap["+gha"] = "\u0F93";
+    UChenMap["+nga"] = "\u0F94";
+    UChenMap["+ca"] = "\u0F95";
+    UChenMap["+cha"] = "\u0F96";
+    UChenMap["+ja"] = "\u0F97";
+    UChenMap["+nya"] = "\u0F99";
+    UChenMap["+tha"] = "\u0FA0";
+    UChenMap["+na"] = "\u0F9E";
+    UChenMap["+ta"] = "\u0F9F";
+    UChenMap["+da"] = "\u0FA1";
+    UChenMap["+dha"] = "\u0FA2";
+    UChenMap["+na"] = "\u0FA3";
+    UChenMap["+pa"] = "\u0FA4";
+    UChenMap["+pha"] = "\u0FA5";
+    UChenMap["+ba"] = "\u0FA6";
+    UChenMap["+bha"] = "\u0FA7";
+    UChenMap["+ma"] = "\u0FA8";
+    UChenMap["+tsa"] = "\u0FA9";
+    UChenMap["+tsha"] = "\u0FAA";
+    UChenMap["+dza"] = "\u0FAB";
+    UChenMap["+dzha"] = "\u0FAC";
+    UChenMap["+wa"] = "\u0FAD";
+    UChenMap["+zha"] = "\u0FAE";
+    UChenMap["+za"] = "\u0FAF";
+    UChenMap["+ya"] = "\u0FB1";
+    UChenMap["+ra"] = "\u0FB2";
+    UChenMap["+la"] = "\u0FB3";
+    UChenMap["+sha"] = "\u0FB4";
+    UChenMap["+sa"] = "\u0FB6";
+    UChenMap["+ha"] = "\u0FB7";
+    UChenMap["+A"] = "\u0FB8";
+    UChenMap["+.wa"] = "\u0FBA";
+    UChenMap["+.ya"] = "\u0FBB";
+    UChenMap["+.ra"] = "\u0FBC";
     //UChenMap["+"] = "\u";
 
     // Vowels
