@@ -363,6 +363,9 @@ define([], function () {
     UChenMap.Ligatures["~denasum"] = "\u0FCF";
 
     UChenMap.toUnicode = function(text) {
+        function escapeRegEx(str) {
+          return str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+        }
         function compareLength(a,b) {
             if (a.length > b.length) return -1;
             if (a.length < b.length) return 1;
@@ -386,7 +389,8 @@ define([], function () {
         function apply(string, substitutions, map) {
           var result = string;
           for (var i = 0; i < substitutions.length; i++) {
-            result = result.replace(substitutions[i], map[substitutions[i]]);
+            var regEx = escapeRegEx(substitutions[i]);
+            result = result.replace(new RegExp(regEx, 'g'), map[substitutions[i]]);
           }
           return result;
         }
