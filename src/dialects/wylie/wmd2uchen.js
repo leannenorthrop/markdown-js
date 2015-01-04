@@ -3,6 +3,11 @@ define([], function () {
 
     // Implementation of http://www.thlib.org/reference/transliteration/#!essay=/thl/ewts/intro/
     // Rules http://www.thlib.org/reference/transliteration/#!essay=/thl/ewts/rules/
+    //
+    // TODO
+    // - Rule 2: Better implementation
+    // - Rule 4: support sanskrit characters
+    // - Rules 8 onwards
     var UChenMap = {};
     // Consonants
     UChenMap["k"] = "\u0F40";
