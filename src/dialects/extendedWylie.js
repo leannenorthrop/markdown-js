@@ -11,33 +11,13 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown, UChenMap) {
   var inline_until_char = DialectHelpers.inline_until_char;
   var uChenMap = UChenMap;
   ExtendedWylie.inline[ "@" ] = function inlineWylie( text ) {
-        function parseSyllable(syllable) {
-          var result = "";
-          for (var i = 0; i < syllable.length; i++) {
-            var c = syllable.charAt(i);
-            result += uChenMap[c] ? (uChenMap[c])  : c;
-          }
-          return result;
-        }
-
-        function parse(text) {
-          var result = "";
-
-          var syllables = text.split(" ");
-          for (var i = 0; i < syllables.length; i++) {
-            result += parseSyllable(syllables[i]) + uChenMap[" "];
-          }
-
-          return result;
-        }
-
         // Inline code block. as many backticks as you like to start it
         // Always skip over the opening ticks.
         var m = text.match( /(@+)(([\s\S\W\w]*?)\1)/ );
 
         if ( m && m[2] ) {
-          var txt = parse(m[3]);
-          return [ m[1].length + m[2].length, [ "wylie", { style: "font-size:72pt;"}, txt ] ];
+          var txt = uChenMap.toUnicode(m[3]);
+          return [ m[1].length + m[2].length, [ "wylie", { style: "font-size:72pt;font-family:Uchen_05"}, txt ] ];
         }
         else {
           // TODO: No matching end code found - warn!

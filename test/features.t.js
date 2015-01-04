@@ -73,6 +73,7 @@ dialects.Gruber = [
 dialects.Maruku = dialects.Gruber.slice( 0 );
 dialects.Maruku.push( "meta", "definition_lists", "tables" );
 
+dialects.ExtendedWylie = ["wylie"];
 // TODO if dialects/features were passed on the command line, filter to them
 // if ( args.length )
 //   features = features.filter( function( x ) args.indexOf( x ) !== -1 );
