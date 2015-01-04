@@ -69,12 +69,38 @@ define([], function () {
     UChenMap[".a"] = "\u0F68";
     UChenMap[".'"] = "\u0F68";
 
-    // Subjoined Consonants
+    // Sanskrit & Subjoined Sanskrit
     UChenMap["gh"] = "\u0F43";
+    UChenMap["g+h"] = "\u0F43";
     UChenMap["dh"] = "\u0F52";
+    UChenMap["d+h"] = "\u0F52";
     UChenMap["bh"] = "\u0F57";
+    UChenMap["b+h"] = "\u0F57";
     UChenMap["dzh"] = "\u0F5C";
-    UChenMap["ksh"] = "\u0F69";
+    UChenMap["dz+h"] = "\u0F5C";
+    UChenMap["kSh"] = "\u0F69";
+    UChenMap["k+Sh"] = "\u0F69";
+    UChenMap["T"] = "\u0F4A";
+    UChenMap["Th"] = "\u0F4B";
+    UChenMap["D"] = "\u0F4C";
+    UChenMap["Dh"] = "\u0F4D";
+    UChenMap["D+h"] = "\u0F4D";
+    UChenMap["N"] = "\u0F4E";
+    UChenMap["Sh"] = "\u0F65";
+    UChenMap["oM"] = "\u0F00";
+    UChenMap["+W"] = "\u0FBA";
+    UChenMap["+Y"] = "\u0FBB";
+    UChenMap["+R"] = "\u0FBC";
+    UChenMap["H"] = "\u0F7F";
+    UChenMap["M"] = "\u0F7E";
+    UChenMap["~M"] = "\u0F83";
+    UChenMap["~M'"] = "\u0F82";
+    UChenMap["~?"] = "\u0F84";
+    UChenMap["&"] = "\u0F85";
+
+    //UChenMap[""] = "\u";
+
+    // Subjoined Consonants
     UChenMap["+k"] = "\u0F90";
     UChenMap["+kh"] = "\u0F91";
     UChenMap["+g"] = "\u0F92";
@@ -160,10 +186,10 @@ define([], function () {
     UChenMap["£"] = "\u0F10";
     UChenMap["¬"] = "\u0F12";
     UChenMap["="] = "\u0F34";
-    //UChenMap["x"] = "\u0FBE";
-    //UChenMap["x."] = "\u0FBF";
-    //UChenMap["...."] = "\u0F36";
-    //UChenMap["o...."] = "\u0F13";
+    UChenMap["x"] = "\u0FBE";
+    UChenMap["x."] = "\u0FBF";
+    UChenMap["...."] = "\u0F36";
+    UChenMap["o...."] = "\u0F13";
     UChenMap["H1"] = "\u0F01";
     UChenMap["H2"] = "\u0F02";
     UChenMap["H3"] = "\u0F03";
@@ -180,7 +206,7 @@ define([], function () {
     UChenMap["("] = "\u0F3C";
     UChenMap[")"] = "\u0F3D";
 
-    // Ligatures
+    // Ligatures & Special Character or Character COmbinations
     UChenMap.Ligatures = {};
     UChenMap.Ligatures["rk"] = "r+k";
     UChenMap.Ligatures["rg"] = "r+g";
@@ -275,7 +301,66 @@ define([], function () {
     UChenMap.Ligatures["grw"] = "g+r+w";
     UChenMap.Ligatures["drw"] = "d+r+w";
     UChenMap.Ligatures["phyw"] = "ph+y+w";
-
+    UChenMap.Ligatures["~om"] = "\u0F00";
+    UChenMap.Ligatures["~athung"] = "\u0F01";
+    UChenMap.Ligatures["~namcheyma"] = "\u0F02";
+    UChenMap.Ligatures["~tertsekma"] = "\u0F03";
+    UChenMap.Ligatures["~dunma"] = "\u0F04";
+    UChenMap.Ligatures["~kabma"] = "\u0F05";
+    UChenMap.Ligatures["~pursheyma"] = "\u0F06";
+    UChenMap.Ligatures["~tseksheyma"] = "\u0F07";
+    UChenMap.Ligatures["~drulshey"] = "\u0F08";
+    UChenMap.Ligatures["~kuryikgo"] = "\u0F09";
+    UChenMap.Ligatures["~kashoyikgo"] = "\u0F0A";
+    UChenMap.Ligatures["~tsek"] = "\u0F0B";
+    UChenMap.Ligatures["~tsektar"] = "\u0F0C";
+    UChenMap.Ligatures["~shey"] = "\u0F0D";
+    UChenMap.Ligatures["~nyishey"] = "\u0F0E";
+    UChenMap.Ligatures["~tsekshey"] = "\u0F0F";
+    UChenMap.Ligatures["~nyitsekshey"] = "\u0F10";
+    UChenMap.Ligatures["~rinchenpungshey"] = "\u0F11";
+    UChenMap.Ligatures["~gyatramshey"] = "\u0F12";
+    UChenMap.Ligatures["~dzutamelongchen"] = "\u0F13";
+    UChenMap.Ligatures["~tertsek"] = "\u0F14";
+    UChenMap.Ligatures["~cheta"] = "\u0F15";
+    UChenMap.Ligatures["~lakta"] = "\u0F16";
+    UChenMap.Ligatures["~trachencharta"] = "\u0F17";
+    UChenMap.Ligatures["~kyupa"] = "\u0F18";
+    UChenMap.Ligatures["~dongtsu"] = "\u0F19";
+    UChenMap.Ligatures["~dekachig"] = "\u0F1A";
+    UChenMap.Ligatures["~dekanyi"] = "\u0F1B";
+    UChenMap.Ligatures["~dekasum"] = "\u0F1C";
+    UChenMap.Ligatures["~denachig"] = "\u0F1D";
+    UChenMap.Ligatures["~denanyi"] = "\u0F1E";
+    UChenMap.Ligatures["~dekadena"] = "\u0F1F";
+    UChenMap.Ligatures["~duta"] = "\u0F34";
+    UChenMap.Ligatures["~ngezungnyida"] = "\u0F35";
+    UChenMap.Ligatures["~dzutashimigchen"] = "\u0F36";
+    UChenMap.Ligatures["~ngezunggorta"] = "\u0F37";
+    UChenMap.Ligatures["~chego"] = "\u0F38";
+    UChenMap.Ligatures["~tsatru"] = "\u0F39";
+    UChenMap.Ligatures["~gugtayun"] = "\u0F3A";
+    UChenMap.Ligatures["~gugtaye"] = "\u0F3B";
+    UChenMap.Ligatures["~angkangyun"] = "\u0F3C";
+    UChenMap.Ligatures["~angkangye"] = "\u0F3D";
+    UChenMap.Ligatures["~yartse"] = "\u0F3E";
+    UChenMap.Ligatures["~martse"] = "\u0F3F";
+    UChenMap.Ligatures["~kuruka"] = "\u0FBE";
+    UChenMap.Ligatures["~kurukashimikchen"] = "\u0FBF";
+    UChenMap.Ligatures["~HEAVY"] = "\u0FC0";
+    UChenMap.Ligatures["~LIGHT"] = "\u0FC1";
+    UChenMap.Ligatures["~CANGTE"] = "\u0FC2";
+    UChenMap.Ligatures["~SBUB"] = "\u0FC3";
+    UChenMap.Ligatures["~drilbu"] = "\u0FC4";
+    UChenMap.Ligatures["~dorje"] = "\u0FC5";
+    UChenMap.Ligatures["~pemaden"] = "\u0FC6";
+    UChenMap.Ligatures["~dorjegyadram"] = "\u0FC7";
+    UChenMap.Ligatures["~phurba"] = "\u0FC8";
+    UChenMap.Ligatures["~norbu"] = "\u0FC9";
+    UChenMap.Ligatures["~norbunyikhyi"] = "\u0FCA";
+    UChenMap.Ligatures["~norbusumkhyi"] = "\u0FCB";
+    UChenMap.Ligatures["~norbushikhyi"] = "\u0FCC";
+    UChenMap.Ligatures["~denasum"] = "\u0FCF";
 
     UChenMap.toUnicode = function(text) {
         function compareLength(a,b) {
