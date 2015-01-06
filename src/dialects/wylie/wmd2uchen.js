@@ -8,6 +8,7 @@ define([], function () {
     // - Rule 2: Better implementation
     // - Rule 4: support sanskrit characters
     // - Rules 8 onwards
+    // - Check ~ is not affected
     var UChenMap = {};
     // Consonants
     UChenMap["k"] = "\u0F40";
@@ -282,7 +283,6 @@ define([], function () {
     UChenMap[";"] = "\u0F0F";
     UChenMap["|"] = "\u0F11";
     UChenMap["!"] = "\u0F08";
-    UChenMap[":"] = "\u0F14";
     UChenMap[":"] = "\u0F14";
     UChenMap["£"] = "\u0F10";
     UChenMap["¬"] = "\u0F12";

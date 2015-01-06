@@ -1,392 +1,392 @@
 ["html",
   ["p",
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྐ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྒ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྔ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྗ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྙ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྟ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྡ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྣ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྦ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྨ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྩ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྫ"
     ]
   ],
   ["p",
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ལྐ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ལྒ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ལྔ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ལྕ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ལྗ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ལྟ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ལྡ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ལྤ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ལྦ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ལྷ"
     ]
   ],
   ["p",
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྐ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྒ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྔ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྙ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྟ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྡ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྣ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྤ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྦ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྨ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྩ"
     ]
   ],
   ["p",
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཀྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཁྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "གྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཅྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཉྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཏྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "དྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཙྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཚྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཞྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཟྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཤྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཧྭ"
     ]
   ],
   ["p",
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཀྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཁྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "གྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "པྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཕྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "བྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "མྱ"
     ]
   ],
   ["p",
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཀྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཁྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "གྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཏྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཐྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "དྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "པྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཕྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "བྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "མྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཤྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཧྲ"
     ]
   ],
   ["p",
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཀླ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "གླ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "བླ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཟླ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རླ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སླ"
     ]
   ],
   ["p",
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྐྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྒྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྨྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྒྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "རྩྭ"
     ]
   ],
   ["p",
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྐྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྒྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྤྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྦྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྨྱ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྐྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྒྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྣྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྤྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྦྲ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "སྨྲ"
     ]
   ],
   ["p",
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "གྲྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "དྲྭ"
     ],
-    ["wylie",
+    ["span",
         {"style":"font-size:72pt;font-family:Uchen_05"},
         "ཕྱྭ"
     ]

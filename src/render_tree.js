@@ -189,6 +189,16 @@ define(['./core', './markdown_helpers'], function(Markdown, MarkdownHelpers) {
       code.push.apply( code, jsonml.splice( i, jsonml.length - i ) );
       jsonml[ i ] = code;
       break;
+    case "uchen_block":
+      jsonml[ 0 ] = "p";
+      i = attrs ? 2 : 1;
+      var uchen = [ "uchen" ];
+      uchen.push.apply( uchen, jsonml.splice( i, jsonml.length - i ) );
+      jsonml[ i ] = uchen;
+      break;
+    case "uchen":
+      jsonml[ 0 ] = "span";
+      break;
     case "inlinecode":
       jsonml[ 0 ] = "code";
       break;
