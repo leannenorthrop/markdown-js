@@ -90,9 +90,9 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask('all', ['test', 'build', 'uglify']);
+  grunt.registerTask('all', ['test', 'build']);
   grunt.registerTask('default', ['all']);
-  grunt.registerTask('test', 'Runs all tests and linting', ['node_tap', 'jshint']);
+  grunt.registerTask('test', 'Runs all tests and linting', ['jshint']);
   grunt.loadNpmTasks('grunt-node-tap');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');

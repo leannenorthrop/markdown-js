@@ -224,6 +224,6 @@ module.exports = function( grunt ) {
 
     grunt.log.writeln( "Creating custom build...\n" );
 
-    grunt.task.run([ "build:*:*:" + modules, 'uglify']);
+    grunt.task.run([ "build:*:*:" + modules]);
   });
 };
