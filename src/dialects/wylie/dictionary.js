@@ -1,81 +1,73 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module) }
 define([], function () {
-  var Dictionary = {};
-  Dictionary.length = 0;
-  Dictionary.items = {};
+  var Dictionary = new Map();
 
   Dictionary.addAll = function(obj) {
     for (var p in obj) {
       if (obj.hasOwnProperty(p)) {
-        Dictionary.items[p] = obj[p];
-        Dictionary.length++;
-      }
-    }
-  };
-
-  Dictionary.setItem = function(key, value) {
-      var previous;
-      if (Dictionary.hasItem(key)) {
-        previous = Dictionary.items[key];
-      }
-      else {
-        Dictionary.length++;
-      }
-      Dictionary.items[key] = value;
-      return previous;
-    };
-
-  Dictionary.getItem = function(key) {
-    return Dictionary.hasItem(key) ? Dictionary.items[key] : undefined;
-  };
-
-  Dictionary.hasItem = function(key) {
-    return Dictionary.items.hasOwnProperty(key);
-  };
- 
-  Dictionary.removeItem = function(key) {
-    if (Dictionary.hasItem(key)) {
-      var previous = Dictionary.items[key];
-      Dictionary.length--;
-      delete Dictionary.items[key];
-      return previous;
-    }
-    else {
-      return undefined;
-    }
-  };
-
-  Dictionary.keys = function() {
-    var keys = [];
-    for (var k in Dictionary.items) {
-      if (Dictionary.hasItem(k)) {
-        keys.push(k);
-      }
-    }
-    return keys;
-  };
-
-  Dictionary.values = function() {
-      var values = [];
-      for (var k in Dictionary.items) {
-        if (Dictionary.hasItem(k)) {
-          values.push(Dictionary.items[k]);
+        var syllables = p.split(" ");
+        if (syllables.length > 0) {
+          var hash = Dictionary;
+          for (var i in syllables) {
+            var syllable = syllables[i];
+            if (!hash.has(syllable)) {
+              hash.set(syllable,new Map());
+            }
+            hash = hash.get(syllable);
+          }
+          hash.set(p, obj[p]);
         }
       }
-      return values;
-    };
+    }
+  };
 
-  Dictionary.each = function(fn) {
-    for (var k in Dictionary.items) {
-      if (Dictionary.hasItem(k)) {
-        fn(k, Dictionary.items[k]);
+  Dictionary.findWord = function(word) {
+    if (word !== undefined) {
+      if (word[word.length-1] === " ") {
+        word = word.substring(0, word.length-1);
+      }
+      var syllables = word.split(" ");
+      var hash = Dictionary;
+      for (var i in syllables) {
+        var syllable = syllables[i];
+        if (!hash.has(syllable)) {
+          hash = undefined;
+          break;
+        }
+        hash = hash.get(syllable);
+      }
+      if (hash === undefined) {
+        return undefined;
+      } else {
+        return hash.has(word) ? hash.get(word) : hash;
       }
     }
   };
 
-  Dictionary.clear = function() {
-    this.items = {};
-    this.length = 0;
+  Dictionary.validUntilSyllableIndex = function(word) {
+    if (word !== undefined) {
+      var syllables = word.split(" ");
+      var found = false;
+      var syllable = "";
+      var count = 0;
+      for (var i in syllables) {
+        syllable += syllables[i] + " ";
+        if (Dictionary.findWord(syllable) !== undefined) {
+          found = true;
+          count++;
+          if (count === syllables.length) {
+            break;
+          }
+        } else {
+          break;
+        }
+      }
+      if (found) {
+        return count;
+      } else {
+        return -1;
+      }
+    }
   };
 
   return Dictionary;
