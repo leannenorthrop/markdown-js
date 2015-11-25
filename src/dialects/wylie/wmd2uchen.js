@@ -9,6 +9,9 @@ define([], function () {
     // - Rule 4: support sanskrit characters
     // - Rules 8 onwards
     // - Check ~ is not affected
+    // Implementation of http://www.thlib.org/reference/transliteration/#!essay=/thl/ewts/intro/
+    // Rules http://www.thlib.org/reference/transliteration/#!essay=/thl/ewts/rules/
+    //
     var UChenMap = {};
     // Consonants
     UChenMap["k"] = "\u0F40";
@@ -41,7 +44,7 @@ define([], function () {
     UChenMap["s"] = "\u0F66";
     UChenMap["h"] = "\u0F67";
     UChenMap["a"] = "\u0F68";
-    UChenMap["'"] = "\u0F68";
+    UChenMap["'"] = "\u0F60";
 
     UChenMap[".k"] = "\u0F40";
     UChenMap[".kh"] = "\u0F41";
