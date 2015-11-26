@@ -278,22 +278,24 @@ define([], function () {
     UChenMap["9"] = "\u0F29";
 
     //Punctuation
+    UChenMap["\n"] = "";
+    UChenMap["\t"] = "";
     UChenMap["_"] = " ";
     UChenMap[" "] = "\u0F0B";
     UChenMap["*"] = "\u0F0C";
-    UChenMap["/"] = "\u0F0D";
     UChenMap["//"] = "\u0F0E";
+    UChenMap["/"] = "\u0F0D";
     UChenMap[";"] = "\u0F0F";
     UChenMap["|"] = "\u0F11";
     UChenMap["!"] = "\u0F08";
     UChenMap[":"] = "\u0F14";
     UChenMap["£"] = "\u0F10";
-    UChenMap["¬"] = "\u0F12";
+    UChenMap["=="] = "\u0F12";
     UChenMap["="] = "\u0F34";
     UChenMap["x"] = "\u0FBE";
     UChenMap["x."] = "\u0FBF";
-    UChenMap["...."] = "\u0F36";
     UChenMap["o...."] = "\u0F13";
+    UChenMap["...."] = "\u0F36";
     UChenMap["H1"] = "\u0F01";
     UChenMap["H2"] = "\u0F02";
     UChenMap["H3"] = "\u0F03";
@@ -307,8 +309,8 @@ define([], function () {
     UChenMap["H7"] = "\u0FD1";
     UChenMap["<"] = "\u0F3A";
     UChenMap[">"] = "\u0F3B";
-    UChenMap["("] = "\u0F3C";
-    UChenMap[")"] = "\u0F3D";
+    UChenMap["{"] = "\u0F3C";
+    UChenMap["}"] = "\u0F3D";
 
     // Ligatures & Special Character or Character COmbinations
     UChenMap.Ligatures = {};

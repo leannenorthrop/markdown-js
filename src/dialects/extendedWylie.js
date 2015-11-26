@@ -30,6 +30,22 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
         }
       };
 
+  function escapeRegExp(str) {
+    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+  }
+
+  function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+  }
+
+  function removePunctuation(str) {
+    return str.replace(/(_|\*|\/|(\/\/)|;|\||\!|\:|£|==|=|x|(x\.)|(\.\.\.\.)|(o\.\.\.\.)|(H1)|(H2)|(H3)|@|#|\$|%|(H4)|(H5)|(H6)|(H7)|<|>|\{|\}|_)/g, "");
+  }
+
+  function endsWithPunctuation(str) {
+    return str.trim().match(/(_|\*|\/|(\/\/)|;|\||\!|\:|£|==|=|x|(x\.)|(\.\.\.\.)|(o\.\.\.\.)|(H1)|(H2)|(H3)|@|#|\$|%|(H4)|(H5)|(H6)|(H7)|<|>|\{|\}|_)$/g, "");
+  }
+
   ExtendedWylie.block.wylie = function(block, next) {
         var ret = [],
             re = /^(:::\n*)([\s\S\W\w\n\r]*?)(\1)/,
@@ -52,9 +68,10 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
             b = seen ? "" : next.shift();
           }
         }
+        wylie = replaceAll(wylie, "\n", "");
 
         var nodes = [];
-        var syllables = wylie.replace("\n", "").split(" ");
+        var syllables = wylie.split(" ");
         var i = 0;
         for (; i < syllables.length; i++) {
           var syllable = syllables[i];
@@ -67,17 +84,23 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
               possibleWord += syllables[i+j] + " ";
             }
           }
-          var validUntil = ExtendedWylie.dictionary.validUntilSyllableIndex(possibleWord);
+          var lookupWord = removePunctuation(possibleWord);
+          var validUntil = ExtendedWylie.dictionary.validUntilSyllableIndex(lookupWord);
           var added = false;
           if (validUntil !== -1) {
-            var validPart = possibleWord.split(" ").splice(0, validUntil);
+            var validPart = lookupWord.split(" ").splice(0, validUntil);
             i += validUntil === validPart.length ? (validUntil-1) : validUntil;
             var word = validPart.join(" ") + " ";
+
+            var validPart2 = possibleWord.split(" ").splice(0, validUntil);
+            validPart2 = validPart2.join(" ");
+            var wordWithPunc = endsWithPunctuation(validPart2) ? validPart2 : (validPart2 + " ");
+
             var foundWord = ExtendedWylie.dictionary.findWord(word);
             if (foundWord !== undefined) {
               if (foundWord.hasOwnProperty("en")) {
                 var node = ["uchen_syllable", {"class":"syllables word"}];
-                node.push(["uchen", {"class":"uchen"}, ["a", {"href":ExtendedWylie.dictionaryURL + encodeURIComponent(validPart.join(" ")+".")}, uChenMap.toUnicode(word)]]);
+                node.push(["uchen", {"class":"uchen"}, ["a", {"href":ExtendedWylie.dictionaryURL + encodeURIComponent(validPart.join(" ")+".")}, uChenMap.toUnicode(wordWithPunc)]]);
                 /*node.push(["uchen_phonetics", {"class":"wylie"}, foundWord.ph]);
                 node.push(["uchen_class", {"class":"wylie"}, foundWord.type]);
                 node.push(["uchen_root_letter", {"class":"wylie"}, foundWord.rl]);*/
@@ -89,8 +112,9 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
             }
           }
           if (!added) {
+            syllable = endsWithPunctuation(syllable) ? syllable : (syllable + " ");
             var node = ["uchen_syllable", {"class":"syllables"}];
-            node.push(["uchen", {"class":"uchen"}, uChenMap.toUnicode(syllable+" ")]);
+            node.push(["uchen", {"class":"uchen"}, uChenMap.toUnicode(syllable)]);
             /*node.push(["uchen_phonetics", {"class":"wylie"}, foundWord.ph]);
             node.push(["uchen_class", {"class":"wylie"}, foundWord.type]);
             node.push(["uchen_root_letter", {"class":"wylie"}, foundWord.rl]);*/
