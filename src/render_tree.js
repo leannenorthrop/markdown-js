@@ -192,9 +192,22 @@ define(['./core', './markdown_helpers'], function(Markdown, MarkdownHelpers) {
     case "uchen_block":
       jsonml[ 0 ] = "p";
       i = attrs ? 2 : 1;
-      var uchen = [ "uchen" ];
-      uchen.push.apply( uchen, jsonml.splice( i, jsonml.length - i ) );
-      jsonml[ i ] = uchen;
+      var syllables = jsonml.splice( i, jsonml.length - i )[0];
+      for (var j = 0; j < syllables.length; j++) {
+        jsonml.push(syllables[j]);
+      }
+      break;
+    case "uchen_syllable":
+      jsonml[ 0 ] = "span";
+      break;
+    case "uchen_wylie":
+      jsonml[ 0 ] = "span";
+      break;
+    case "uchen_english":
+      jsonml[ 0 ] = "span";
+      break;
+    case "uchen_phonetics":
+      jsonml[ 0 ] = "span";
       break;
     case "uchen":
       jsonml[ 0 ] = "span";
