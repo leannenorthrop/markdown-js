@@ -3,15 +3,17 @@ define(['../markdown_helpers',
         './dialect_helpers',
         './gruber',
         '../parser',
-        './wylie/wmd2uchen'],
+        './wylie/wmd2uchen',
+        './extendedWylie'],
 
-function (MarkdownHelpers, DialectHelpers, Gruber, Markdown, UChenMap) {
+function (MarkdownHelpers, DialectHelpers, Gruber, Markdown, UChenMap, ExtendedWylie) {
   var inline_until_char = DialectHelpers.inline_until_char;
   var mk_block = MarkdownHelpers.mk_block;
   var forEach = MarkdownHelpers.forEach;
   var uChenMap = UChenMap;
 
   var Wylie = {
+    isMarkUp: false,
     block: {
       wylie: function wylie(block, next) {
         var ret = [],
@@ -35,8 +37,12 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown, UChenMap) {
             b = seen ? "" : next.shift();
           }
         }
-
-        return wylie.length > 0 ? [ [ "uchen_block", { "class": "uchen", "wylie": wylie }, uChenMap.toUnicode(wylie) ] ] : [];
+        if (this.isMarkUp) {
+          var nodes = ExtendedWylie.markup(wylie);
+          return wylie.length > 0 ? [[ "uchen_block", { "class": "uchen_text", "wylie": wylie }, nodes ]] : [];
+        } else {
+          return wylie.length > 0 ? [ [ "uchen_block", { "class": "uchen", "wylie": wylie }, uChenMap.toUnicode(wylie) ] ] : [];
+        }
       },
       para: function para( block ) {
         // everything's a para!

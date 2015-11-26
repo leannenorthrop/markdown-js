@@ -13,6 +13,7 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
   var mk_block = MarkdownHelpers.mk_block;
   var uChenMap = UChenMap;
 
+  ExtendedWylie.isMarkUp = false;
   ExtendedWylie.dictionary = Dictionary;
   ExtendedWylie.dictionaryURL = "http://leannenorthrop.github.io/classical-tibetan/resource/dictionary/index.html#";
   
@@ -46,6 +47,63 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
     return str.trim().match(/(_|\*|\/|(\/\/)|;|\||\!|\:|£|==|=|x|(x\.)|(\.\.\.\.)|(o\.\.\.\.)|(H1)|(H2)|(H3)|@|#|\$|%|(H4)|(H5)|(H6)|(H7)|<|>|\{|\}|_)$/g, "");
   }
 
+  ExtendedWylie.markup = function(wylie) {
+    var nodes = [];
+    var syllables = wylie.split(" ");
+    var i = 0;
+    for (; i < syllables.length; i++) {
+      var syllable = syllables[i];
+      if (syllable === " " || syllable === "") {
+        continue;
+      }
+      var possibleWord = "";
+      for (var j = 0; j < 9; j++) {
+        if ((i+j) < syllables.length) {
+          possibleWord += syllables[i+j] + " ";
+        }
+      }
+      var lookupWord = removePunctuation(possibleWord);
+      var validUntil = ExtendedWylie.dictionary.validUntilSyllableIndex(lookupWord);
+      var added = false;
+      if (validUntil !== -1) {
+        var validPart = lookupWord.split(" ").splice(0, validUntil);
+        i += validUntil === validPart.length ? (validUntil-1) : validUntil;
+        var word = validPart.join(" ") + " ";
+
+        var validPart2 = possibleWord.split(" ").splice(0, validUntil);
+        validPart2 = validPart2.join(" ");
+        var wordWithPunc = endsWithPunctuation(validPart2) ? validPart2 : (validPart2 + " ");
+
+        var foundWord = ExtendedWylie.dictionary.findWord(word);
+        if (foundWord !== undefined) {
+          if (foundWord.hasOwnProperty("en")) {
+            var node = ["uchen_syllable", {"class":"syllables word"}];
+            node.push(["uchen", {"class":"uchen"}, ["a", {"href":ExtendedWylie.dictionaryURL + encodeURIComponent(validPart.join(" ")+".")}, uChenMap.toUnicode(wordWithPunc)]]);
+            /*node.push(["uchen_phonetics", {"class":"wylie"}, foundWord.ph]);
+            node.push(["uchen_class", {"class":"wylie"}, foundWord.type]);
+            node.push(["uchen_root_letter", {"class":"wylie"}, foundWord.rl]);*/
+            node.push(["uchen_wylie", {"class":"wylie"}, word]);
+            node.push(["uchen_english", {"class":"english"}, foundWord.en]);
+            nodes.push(node);
+            added = true;
+          }
+        }
+      }
+      if (!added) {
+        syllable = endsWithPunctuation(syllable) ? syllable : (syllable + " ");
+        var node = ["uchen_syllable", {"class":"syllables"}];
+        node.push(["uchen", {"class":"uchen"}, uChenMap.toUnicode(syllable)]);
+        /*node.push(["uchen_phonetics", {"class":"wylie"}, foundWord.ph]);
+        node.push(["uchen_class", {"class":"wylie"}, foundWord.type]);
+        node.push(["uchen_root_letter", {"class":"wylie"}, foundWord.rl]);*/
+        node.push(["uchen_wylie", {"class":"wylie"}, syllable]);
+        node.push(["uchen_english", {"class":"english"}, " "]);
+        nodes.push(node);
+      }
+    }
+    return nodes;
+  };
+
   ExtendedWylie.block.wylie = function(block, next) {
         var ret = [],
             re = /^(:::\n*)([\s\S\W\w\n\r]*?)(\1)/,
@@ -71,57 +129,12 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
         wylie = replaceAll(wylie, "\n", "");
 
         var nodes = [];
-        var syllables = wylie.split(" ");
-        var i = 0;
-        for (; i < syllables.length; i++) {
-          var syllable = syllables[i];
-          if (syllable === " " || syllable === "") {
-            continue;
-          }
-          var possibleWord = "";
-          for (var j = 0; j < 9; j++) {
-            if ((i+j) < syllables.length) {
-              possibleWord += syllables[i+j] + " ";
-            }
-          }
-          var lookupWord = removePunctuation(possibleWord);
-          var validUntil = ExtendedWylie.dictionary.validUntilSyllableIndex(lookupWord);
-          var added = false;
-          if (validUntil !== -1) {
-            var validPart = lookupWord.split(" ").splice(0, validUntil);
-            i += validUntil === validPart.length ? (validUntil-1) : validUntil;
-            var word = validPart.join(" ") + " ";
-
-            var validPart2 = possibleWord.split(" ").splice(0, validUntil);
-            validPart2 = validPart2.join(" ");
-            var wordWithPunc = endsWithPunctuation(validPart2) ? validPart2 : (validPart2 + " ");
-
-            var foundWord = ExtendedWylie.dictionary.findWord(word);
-            if (foundWord !== undefined) {
-              if (foundWord.hasOwnProperty("en")) {
-                var node = ["uchen_syllable", {"class":"syllables word"}];
-                node.push(["uchen", {"class":"uchen"}, ["a", {"href":ExtendedWylie.dictionaryURL + encodeURIComponent(validPart.join(" ")+".")}, uChenMap.toUnicode(wordWithPunc)]]);
-                /*node.push(["uchen_phonetics", {"class":"wylie"}, foundWord.ph]);
-                node.push(["uchen_class", {"class":"wylie"}, foundWord.type]);
-                node.push(["uchen_root_letter", {"class":"wylie"}, foundWord.rl]);*/
-                node.push(["uchen_wylie", {"class":"wylie"}, word]);
-                node.push(["uchen_english", {"class":"english"}, foundWord.en]);
-                nodes.push(node);
-                added = true;
-              }
-            }
-          }
-          if (!added) {
-            syllable = endsWithPunctuation(syllable) ? syllable : (syllable + " ");
-            var node = ["uchen_syllable", {"class":"syllables"}];
-            node.push(["uchen", {"class":"uchen"}, uChenMap.toUnicode(syllable)]);
-            /*node.push(["uchen_phonetics", {"class":"wylie"}, foundWord.ph]);
-            node.push(["uchen_class", {"class":"wylie"}, foundWord.type]);
-            node.push(["uchen_root_letter", {"class":"wylie"}, foundWord.rl]);*/
-            node.push(["uchen_wylie", {"class":"wylie"}, syllable]);
-            node.push(["uchen_english", {"class":"english"}, " "]);
-            nodes.push(node);
-          }
+        if (ExtendedWylie.isMarkUp) {
+          nodes = ExtendedWylie.markup(wylie);
+        } else {
+          var node = ["uchen_syllable", {"class":"syllables"}];
+          node.push(["uchen", {"class":"uchen"}, uChenMap.toUnicode(wylie)]);
+          nodes.push(node);
         }
 
         return wylie.length > 0 ? [[ "uchen_block", { "class": "uchen_text", "wylie": wylie }, nodes ]] : [];
