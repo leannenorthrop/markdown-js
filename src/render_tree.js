@@ -215,6 +215,10 @@ define(['./core', './markdown_helpers'], function(Markdown, MarkdownHelpers) {
     case "html_void":
       jsonml[0] = jsonml[2];
       break;
+    case "html_element":
+      jsonml[0] = jsonml[1].name;
+      delete jsonml[1].name;
+      break;
     case "inlinecode":
       jsonml[ 0 ] = "code";
       break;

@@ -112,14 +112,38 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
   };
 
   ExtendedGruber.inline[ "<" ] = function inlineHtmlVoid( text ) {
-        // Inline wylie block.
+        // Inline void html block.
         var m = text.match( /^<(?:(area|br|wbr)\s*\/?)>/i );
 
         if ( m ) {
           console.log(m);
           return [m[0].length, ["html_void", { }, m[1]]];
         } else {
-          return Markdown.dialects.Gruber.inline["<"](text);
+          m = text.match(/<(article|aside|audio|bdi|details|figure|figcaption|footer|header|main|mark|nav|output|rp|rt|ruby|section|summary|time|abbr|address|bdo|caption|cite|code|dd|del|dfn|div|dl|dt|h1|h2|h3|h4|h5|h6|iframe|ins|kbd|map|pre|q|s|samp|span|strike|strong|sub|sup|var)(\s*[^='"]*=('[^']*'|"[^"]*)*)*>(.*)<\s*\/\1\s*>/i);
+          if (m) {
+            console.log(m);
+            var name = m[1];
+            var attributes = m[2] ? m[2].trim() : undefined;
+            var attr = {'name':name};
+            if (attributes !== undefined) {
+              attributes = attributes.split(/(?:\s+)/);
+              for (var j = 0; j < attributes.length; j++) {
+                var parts = attributes[j].split("=");
+                var val = parts[1].trim();
+                val = val.substring(1, val.length-1);
+                attr[parts[0].trim()] = val;
+              }
+            }
+            var text = m[4];
+            var inner = this.processInline(text);
+            var node = ["html_element", attr];
+            for (var i = 0; i < inner.length; i++) {
+              node.push(inner[i]);
+            }
+            return [m[0].length, node];
+          } else {
+            return Markdown.dialects.Gruber.inline["<"](text);
+          }
         }
       };
 
