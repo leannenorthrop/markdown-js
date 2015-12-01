@@ -212,6 +212,9 @@ define(['./core', './markdown_helpers'], function(Markdown, MarkdownHelpers) {
     case "uchen":
       jsonml[ 0 ] = "span";
       break;
+    case "html_void":
+      jsonml[0] = jsonml[2];
+      break;
     case "inlinecode":
       jsonml[ 0 ] = "code";
       break;

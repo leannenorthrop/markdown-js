@@ -20,7 +20,7 @@
       console.log(dictionary);
       function Editor(input, preview) {
         this.update = function () {
-          var tree = markdown.parse(input.value, "ExtendedWylie");
+          var tree = markdown.parse(input.value, "ExtendedGruber");
           var jsonml = markdown.toHTMLTree( tree );
           var html = markdown.renderJsonML( jsonml );
           preview.innerHTML = html;

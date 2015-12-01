@@ -111,8 +111,21 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
     return [table];
   };
 
+  ExtendedGruber.inline[ "<" ] = function inlineHtmlVoid( text ) {
+        // Inline wylie block.
+        var m = text.match( /^<(?:(area|br|wbr)\s*\/?)>/i );
+
+        if ( m ) {
+          console.log(m);
+          return [m[0].length, ["html_void", { }, m[1]]];
+        } else {
+          return Markdown.dialects.Gruber.inline["<"](text);
+        }
+      };
+
   Markdown.dialects.ExtendedGruber = ExtendedGruber;
   Markdown.buildBlockOrder ( Markdown.dialects.ExtendedGruber.block );
+  Markdown.buildInlinePatterns( Markdown.dialects.ExtendedGruber.inline );
 
   return ExtendedGruber;
 });
