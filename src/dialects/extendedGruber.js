@@ -119,7 +119,7 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
           console.log(m);
           return [m[0].length, ["html_void", { }, m[1]]];
         } else {
-          m = text.match(/<(article|aside|audio|bdi|details|figure|figcaption|footer|header|main|mark|nav|output|rp|rt|ruby|section|summary|time|abbr|address|bdo|caption|cite|code|dd|del|dfn|div|dl|dt|h1|h2|h3|h4|h5|h6|iframe|ins|kbd|map|pre|q|s|samp|span|strike|strong|sub|sup|var)(\s*[^='"]*=('[^']*'|"[^"]*)*)*>(.*)<\s*\/\1\s*>/i);
+          m = text.match(/^<(article|aside|audio|bdi|details|figure|figcaption|footer|header|main|mark|nav|output|rp|rt|ruby|section|summary|time|abbr|address|bdo|caption|cite|code|dd|del|dfn|div|dl|dd|dt|h1|h2|h3|h4|h5|h6|iframe|ins|kbd|map|pre|q|s|samp|span|strike|strong|sub|sup|var)(\s*[^='"]*=('[^']*'|"[^"]*)*)*>((?:.|\n)*?)<\s*\/\1\s*>/i);
           if (m) {
             console.log(m);
             var name = m[1];
@@ -134,8 +134,8 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
                 attr[parts[0].trim()] = val;
               }
             }
-            var text = m[4];
-            var inner = this.processInline(text);
+            var txt = m[4];
+            var inner = this.processInline(txt);
             var node = ["html_element", attr];
             for (var i = 0; i < inner.length; i++) {
               node.push(inner[i]);
