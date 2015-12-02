@@ -73,7 +73,7 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
       return undefined;
     }
 
-    var table = [ "table",{"class":".table"}, [ "thead", [ "tr" ] ], [ "tbody" ] ];
+    var table = [ "table",{"class":"table"}, [ "thead", [ "tr" ] ], [ "tbody" ] ];
 
     // remove trailing pipes, then split on pipes
     // (no escaped pipes are allowed in horizontal rule)
@@ -116,7 +116,16 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
     if (m) {
       return [m[0].length, [ "strikeout", m[1]]];
     } else {
-      return [0,""];
+      return [2,""];
+    }
+  };
+
+  ExtendedGruber.inline[ "\/" ] = function inlineMark(text) {
+    var m = text.match(/^\/([^\/]*)\//i);
+    if (m) {
+      return [m[0].length, [ "mark", m[1]]];
+    } else {
+      return [1,""];
     }
   };
 
