@@ -142,7 +142,7 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
             return [m[0].length, ["html_element", {'name':m[2], 'element':'a'}, ""]];
           }
           else {
-            m = text.match(/^<(article|aside|audio|bdi|details|figure|figcaption|footer|header|main|mark|nav|output|rp|rt|ruby|section|summary|time|abbr|address|bdo|cite|code|dd|del|dfn|div|dl|dd|dt|h1|h2|h3|h4|h5|h6|iframe|ins|kbd|pre|q|s|samp|span|strong|sub|sup|var)(\s*[^='"]*=('[^']*'|"[^"]*)*)*>((?:.|\n)*?)<\s*\/\1\s*>/i);
+            m = text.match(/^<(article|aside|audio|bdi|details|figure|figcaption|footer|header|main|nav|output|rp|rt|ruby|section|summary|time|abbr|address|bdo|cite|code|dd|del|dfn|div|dl|dd|dt|h1|h2|h3|h4|h5|h6|iframe|ins|kbd|pre|q|s|samp|span|strong|sub|sup|var)(\s*[^='"]*=('[^']*'|"[^"]*)*)*>((?:.|\n)*?)<\s*\/\1\s*>/i);
             if (m) {
               console.log(m);
               var name = m[1];
