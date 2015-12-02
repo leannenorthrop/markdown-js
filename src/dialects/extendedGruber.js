@@ -73,7 +73,7 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
       return undefined;
     }
 
-    var table = [ "table", [ "thead", [ "tr" ] ], [ "tbody" ] ];
+    var table = [ "table",{"class":".table"}, [ "thead", [ "tr" ] ], [ "tbody" ] ];
 
     // remove trailing pipes, then split on pipes
     // (no escaped pipes are allowed in horizontal rule)
@@ -95,7 +95,7 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
     // now for the header, avoid escaped pipes
     m[1] = _split_on_unescaped(m[1].replace(/\|\s*$/, ''), '|');
     for (i = 0; i < m[1].length; i++) {
-      table[1][1].push(['th', html_attrs[i] || {}].concat(
+      table[2][1].push(['th', html_attrs[i] || {}].concat(
         this.processInline(m[1][i].trim())));
     }
 
@@ -105,15 +105,24 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
       row = _split_on_unescaped(row, '|');
       for (i = 0; i < row.length; i++)
         html_row.push(['td', html_attrs[i] || {}].concat(this.processInline(row[i].trim())));
-      table[2].push(html_row);
+      table[3].push(html_row);
     }, this);
 
     return [table];
   };
 
+  ExtendedGruber.inline[ "~~" ] = function inlineStrikeout(text) {
+    var m = text.match(/^~~([^~]*)~~/i);
+    if (m) {
+      return [m[0].length, [ "strikeout", m[1]]];
+    } else {
+      return [0,""];
+    }
+  };
+
   ExtendedGruber.inline[ "<" ] = function inlineHtmlVoid( text ) {
         // Inline void html block.
-        var m = text.match( /^<(?:(area|br|wbr)\s*\/?)>/i );
+        var m = text.match( /^<(?:(br|wbr)\s*\/?)>/i );
 
         if ( m ) {
           console.log(m);
@@ -124,7 +133,7 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
             return [m[0].length, ["html_element", {'name':m[2], 'element':'a'}, ""]];
           }
           else {
-            m = text.match(/^<(article|aside|audio|bdi|details|figure|figcaption|footer|header|main|mark|nav|output|rp|rt|ruby|section|summary|time|abbr|address|bdo|caption|cite|code|dd|del|dfn|div|dl|dd|dt|h1|h2|h3|h4|h5|h6|iframe|ins|kbd|map|pre|q|s|samp|span|strike|strong|sub|sup|var)(\s*[^='"]*=('[^']*'|"[^"]*)*)*>((?:.|\n)*?)<\s*\/\1\s*>/i);
+            m = text.match(/^<(article|aside|audio|bdi|details|figure|figcaption|footer|header|main|mark|nav|output|rp|rt|ruby|section|summary|time|abbr|address|bdo|cite|code|dd|del|dfn|div|dl|dd|dt|h1|h2|h3|h4|h5|h6|iframe|ins|kbd|pre|q|s|samp|span|strong|sub|sup|var)(\s*[^='"]*=('[^']*'|"[^"]*)*)*>((?:.|\n)*?)<\s*\/\1\s*>/i);
             if (m) {
               console.log(m);
               var name = m[1];

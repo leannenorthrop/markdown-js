@@ -232,6 +232,9 @@ define(['./core', './markdown_helpers'], function(Markdown, MarkdownHelpers) {
     case "link":
       jsonml[ 0 ] = "a";
       break;
+    case "strikeout":
+      jsonml[0] = "del";
+      break;
     case "link_ref":
       jsonml[ 0 ] = "a";
 
