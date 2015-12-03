@@ -238,6 +238,12 @@ define(['./core', './markdown_helpers'], function(Markdown, MarkdownHelpers) {
     case "mark":
       jsonml[0] = "mark";
       break;
+    case "superscript":
+      jsonml[0] = "sup";
+      break;
+    case "subscript":
+      jsonml[0] = "sub";
+      break;
     case "link_ref":
       jsonml[ 0 ] = "a";
 

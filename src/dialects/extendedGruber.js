@@ -120,10 +120,28 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown) {
     }
   };
 
-  ExtendedGruber.inline[ "\/" ] = function inlineMark(text) {
-    var m = text.match(/^\/([^\/]*)\//i);
+  ExtendedGruber.inline[ "!!" ] = function inlineMark(text) {
+    var m = text.match(/^!!([^!]*)!!/i);
     if (m) {
       return [m[0].length, [ "mark", m[1]]];
+    } else {
+      return [1,""];
+    }
+  };
+
+  ExtendedGruber.inline[ "^" ] = function inlineSuperscript(text) {
+    var m = text.match(/^\^([^\^\s.?,!?;:'"/\|<>\[\]\(\)\*\&\%\$\£\#\@]*)/i);
+    if (m) {
+      return [m[0].length, [ "superscript", m[1]]];
+    } else {
+      return [1,""];
+    }
+  };
+
+  ExtendedGruber.inline[ "vv" ] = function inlineSubscript(text) {
+    var m = text.match(/^^vv([^v\s.?,!?;:'"/\|<>\[\]\(\)\*\&\%\$\£\#\@]*)/i);
+    if (m) {
+      return [m[0].length, [ "subscript", m[1]]];
     } else {
       return [1,""];
     }
