@@ -37,12 +37,7 @@ function (MarkdownHelpers, DialectHelpers, Gruber, Markdown, UChenMap, ExtendedW
             b = seen ? "" : next.shift();
           }
         }
-        if (Wylie.isMarkUp) {
-          var nodes = ExtendedWylie.markup(wylie);
-          return wylie.length > 0 ? [[ "uchen_block", { "class": "uchen_text", "wylie": wylie }, nodes ]] : [];
-        } else {
-          return wylie.length > 0 ? [ [ "uchen_block", { "class": "uchen", "wylie": wylie }, uChenMap.toUnicode(wylie) ] ] : [];
-        }
+        return wylie.length > 0 ? [ [ "uchen_block", { "class": "uchen", "wylie": wylie }, uChenMap.toUnicode(wylie) ] ] : [];
       },
       para: function para( block ) {
         // everything's a para!
