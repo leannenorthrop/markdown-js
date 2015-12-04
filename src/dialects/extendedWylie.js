@@ -133,15 +133,21 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
             b = seen ? "" : next.shift();
           }
         }
-        wylie = replaceAll(wylie, "\n", "");
+        wylieBlocks = wylie.split("\n");
 
         var nodes = [];
         if (ExtendedWylie.isMarkUp) {
-          nodes = ExtendedWylie.markup(wylie);
+          for (var i = 0; i < wylieBlocks.length; i++) {
+            var wylieTxt = wylieBlocks[i];
+            nodes.push(["para", {}, ExtendedWylie.markup(wylie)]);
+          }
         } else {
-          var node = ["uchen_syllable", {"class":"syllables"}];
-          node.push(["uchen", {"class":"uchen"}, uChenMap.toUnicode(wylie)]);
-          nodes.push(node);
+          for (var i = 0; i < wylieBlocks.length; i++) {
+            var wylieTxt = wylieBlocks[i];
+            var node = ["uchen_syllable", {"class":"syllables"}];
+            node.push(["para", {}, ["uchen", {"class":"uchen"}, uChenMap.toUnicode(wylieTxt)]]);
+            nodes.push(node);
+          }
         }
 
         return wylie.length > 0 ? [[ "uchen_block", { "class": "uchen_text", "wylie": wylie }, nodes ]] : [];
