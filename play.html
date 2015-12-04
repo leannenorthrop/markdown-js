@@ -15,15 +15,18 @@
 "mu man":{"en":"purple","rl":"m","ph":"","type":""},
 "zing skya":{"en":"pink","rl":"z","ph":"","type":""}
 };
-      var dictionary = markdown.Markdown.dialects.ExtendedWylie.dictionary;
+      var dialect = markdown.Markdown.dialects.ExtendedWylie;
+      dialect.isMarkUp = true;
+      var dictionary = dialect.dictionary;
       dictionary.addAll(dict);
-      console.log(dictionary);
       function Editor(input, preview) {
         this.update = function () {
           var tree = markdown.parse(input.value, "ExtendedWylie");
+          tree = dialect.appendGlossary(tree);
           var jsonml = markdown.toHTMLTree( tree );
           var html = markdown.renderJsonML( jsonml );
           preview.innerHTML = html;
+          
           //preview.innerHTML = markdown.toHTML(input.value);
         };
         input.editor = this;

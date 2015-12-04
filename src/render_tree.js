@@ -244,6 +244,15 @@ define(['./core', './markdown_helpers'], function(Markdown, MarkdownHelpers) {
     case "subscript":
       jsonml[0] = "sub";
       break;
+    case "glossary":
+      jsonml[ 0 ] = "dl";
+      break;
+    case "glossary_term":
+      jsonml[ 0 ] = "dt";
+      break;
+    case "glossary_def":
+      jsonml[ 0 ] = "dd";
+      break;
     case "link_ref":
       jsonml[ 0 ] = "a";
 

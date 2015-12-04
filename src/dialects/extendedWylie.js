@@ -14,6 +14,7 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
   var uChenMap = UChenMap;
 
   ExtendedWylie.isMarkUp = false;
+  ExtendedWylie.glossary = {};
   ExtendedWylie.dictionary = Dictionary;
   ExtendedWylie.dictionaryURL = "http://leannenorthrop.github.io/classical-tibetan/resource/dictionary/index.html#";
   
@@ -85,6 +86,12 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
             node.push(["uchen_wylie", {"class":"wylie"}, word]);
             node.push(["uchen_english", {"class":"english"}, foundWord.en]);
             nodes.push(node);
+
+            var rl = foundWord.rl;
+            if (!ExtendedWylie.glossary.hasOwnProperty(rl)) {
+              ExtendedWylie.glossary[rl] = [];
+            }
+            ExtendedWylie.glossary[rl].push({"uchen":uChenMap.toUnicode(validPart2),"english":foundWord.en});
             added = true;
           }
         }
@@ -139,6 +146,27 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
 
         return wylie.length > 0 ? [[ "uchen_block", { "class": "uchen_text", "wylie": wylie }, nodes ]] : [];
       };
+
+  ExtendedWylie.appendGlossary = function(mdTree) {
+    var nodes = ["glossary",{"class":"dl-horizontal"}];
+    var glossaryEntries = ExtendedWylie.glossary;
+
+    var order = ["k","kh","g","ng","c","ch","j","ny","t","th","d","n","p","ph","b","m","ts","tsh","dz","w","zh","z","'","y","r","l","sh","s","h","a"];
+    for (var i = 0; i < order.length; i++) {
+      if (glossaryEntries.hasOwnProperty(order[i])) {
+        var entries = glossaryEntries[order[i]];
+        for (var j = 0; j < entries.length; j++) {
+          var entry = entries[j];
+          nodes.push(["glossary_term",{},entry["uchen"]]);
+          nodes.push(["glossary_def",{},entry["english"]]);
+        }
+      }
+    }
+    mdTree.push(["header", {"level": 2}, "Glossary"]);
+    mdTree.push(nodes);
+    ExtendedWylie.glossary = [];
+    return mdTree;
+  };
 
   Markdown.dialects.ExtendedWylie = ExtendedWylie;
   Markdown.buildBlockOrder ( Markdown.dialects.ExtendedWylie.block );
