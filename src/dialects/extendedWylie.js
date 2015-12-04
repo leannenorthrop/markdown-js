@@ -133,13 +133,13 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
             b = seen ? "" : next.shift();
           }
         }
-        wylieBlocks = wylie.split("\n");
+        var wylieBlocks = wylie.split("\n");
 
         var nodes = [];
         if (ExtendedWylie.isMarkUp) {
           for (var i = 0; i < wylieBlocks.length; i++) {
             var wylieTxt = wylieBlocks[i];
-            nodes.push(["para", {}, ExtendedWylie.markup(wylie)]);
+            nodes.push(["para", {}, [ "uchen_block", { "class": "uchen_text", "wylie": wylie }, ExtendedWylie.markup(wylieTxt)]]);
           }
         } else {
           for (var i = 0; i < wylieBlocks.length; i++) {
@@ -150,7 +150,7 @@ function (MarkdownHelpers, DialectHelpers, ExtendedGruber, Markdown, UChenMap, D
           }
         }
 
-        return wylie.length > 0 ? [[ "uchen_block", { "class": "uchen_text", "wylie": wylie }, nodes ]] : [];
+        return wylie.length > 0 ? [nodes] : [];
       };
 
   ExtendedWylie.appendGlossary = function(mdTree) {
